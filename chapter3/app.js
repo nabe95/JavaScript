@@ -1,5 +1,11 @@
 // ジャンケンの入力
 let user_hand = prompt('ジャンケンの手をグー、チョキ、パーから選んでください。');
+// グー・チョキ・パー以外の文字列が入力されたときに、「グー・チョキ・パーのいずれかを入力してください」とアラートウィンドウにエラーが表示
+while ((user_hand != "グー") && (user_hand != "チョキ") && (user_hand != "パー") && (user_hand != null)){
+  alert('グー・チョキ・パーのいずれかを入力してください');
+  // アラートウィンドウでエラーが表示された後、もう一度、プロンプト入力欄が表示されて入力できる
+  user_hand = prompt('ジャンケンの手をグー、チョキ、パーから選んでください。');
+}
 
 // ランダムでジャンケンの手を決める関数
 let js_hand = getJShand();
@@ -8,7 +14,11 @@ let js_hand = getJShand();
 let judge = winLose(user_hand, js_hand);
 
 // 結果の表示
-alert('あなたの選んだ手は' + user_hand + 'です。\nJavaScriptの選んだ手は' + js_hand + 'です。\n結果は' + judge + 'です。');
+if (user_hand != null){
+  alert('あなたの選んだ手は' + user_hand + 'です。\nJavaScriptの選んだ手は' + js_hand + 'です。\n結果は' + judge + 'です。');
+} else {
+  alert("またチャレンジしてね")
+}
 
 // ランダムでジャンケンの手を作成する関数
 function getJShand(){
